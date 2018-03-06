@@ -36,13 +36,15 @@ function getCall() {
     }
 }
 
+//problema con  Access-Control-Allow, revisar consola. Solo se puede acceder instalando el pluggin de CORS
 function getWeatherData(lat, lng) {
     $.ajax({
         type: "GET",
-        url: `https://api.darksky.net/forecast/44f1b9aff98cc70b888435b1888ccba6/${lat},${lng}`,
-        //origin:"https://api.darksky.net/forecast",
-        //crossDomain : true,
-        // Access-Control-Allow-Credentials: true,
+        
+        url: `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/44f1b9aff98cc70b888435b1888ccba6/${lat},${lng}`,
+        /*origin:"https://api.darksky.net/forecast",
+        crossDomain : true,
+        Access-Control-Allow-Credentials: true,*/
         dataType: 'json',
 
     }).done(getWeather);
