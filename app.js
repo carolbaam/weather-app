@@ -1,6 +1,7 @@
 const form = document.getElementById('search-form');
 const searchField = document.getElementById('search-key-word');
 const responseContainer = document.getElementById('response-container');
+const responseContainer2 = document.getElementById('response-container-2');
 
 
 
@@ -60,11 +61,25 @@ function getWeather(data) {
     //console.log(weeklyInfo);
     weeklyInfo.forEach(function(day){
         const time=day.time;
-       const timeConvert=new Date(0);
-        timeConvert.setUTCDate(time);
-       const max=day.apparentTemperatureMax;
+        const timeConvert=new Date(0);
+       timeConvert.setUTCSeconds(time);
+        console.log(timeConvert);
+        const max=day.apparentTemperatureMax;
         const min=day.apparentTemperatureMin;
-        console.log(d);
+        
+        const date=document.createElement('p');
+        const maxTemp=document.createElement('span');
+        const minTemp=document.createElement('span');
+        date.innerHTML= timeConvert;
+        maxTemp.innerText='Max:'+ max+'º' + '-';
+        minTemp.innerText='Min:' + min+'º';
+        console.log(date);
+        
+        date.appendChild(maxTemp);
+        date.appendChild(minTemp);
+        responseContainer.appendChild(date);
+
+
     })
     const icon = data.currently.icon;
     const humid = data.currently.humidity;
