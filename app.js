@@ -71,15 +71,16 @@ function getWeather(data) {
 
 weeklyInfo.forEach(function(day){
     const time=day.time;
-    const timeConvert=new Date(0);
-   timeConvert.setUTCSeconds(time);
-    console.log(timeConvert);
+    
     const max=day.apparentTemperatureMax;
     const min=day.apparentTemperatureMin;
+    const datee=new Date(0);
+    datee.setUTCSeconds(time);
+    const realDate= datee.toLocaleString('en-US',{weekday:'long', day:'numeric'})
     
    
     
-    paintDays(timeConvert, max,min)
+    paintDays( realDate,max,min)
 
 
 })
@@ -88,6 +89,9 @@ weeklyInfo.forEach(function(day){
 
 
 }
+
+
+
 function paintInfo(icon,humid,wi,uv,press,temp,summary,precip,daily){
     let name = document.createElement('h1');
     let temperature = document.createElement('h2');
@@ -124,12 +128,12 @@ function paintInfo(icon,humid,wi,uv,press,temp,summary,precip,daily){
 }
 
 
-function paintDays(timeConvert,max,min){
+function paintDays(realDate,max,min){
     
     const date=document.createElement('p');
     const maxTemp=document.createElement('span');
     const minTemp=document.createElement('span');
-    date.innerHTML= timeConvert;
+    date.innerHTML= realDate;
     maxTemp.innerText='Max:'+ max+'º' + '-';
     minTemp.innerText='Min:' + min+'º';
     console.log(date);
