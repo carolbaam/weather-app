@@ -56,6 +56,16 @@ function getWeather(data) {
     const summary = data.currently.summary;
     const precip = data.currently.precipType;
     const daily = data.daily.summary;
+    const weeklyInfo=data.daily.data;
+    //console.log(weeklyInfo);
+    weeklyInfo.forEach(function(day){
+        const time=day.time;
+       const timeConvert=new Date(0);
+        timeConvert.setUTCDate(time);
+       const max=day.apparentTemperatureMax;
+        const min=day.apparentTemperatureMin;
+        console.log(d);
+    })
     const icon = data.currently.icon;
     const humid = data.currently.humidity;
     const wi = data.currently.windSpeed;
