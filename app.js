@@ -52,43 +52,43 @@ function getWeatherData(lat, lng) {
 }
 
 function getWeather(data) {
+    responseContainer2.innerHTML="";
     console.log(data)
     const temp = data.currently.apparentTemperature;
     const summary = data.currently.summary;
     const precip = data.currently.precipType;
     const daily = data.daily.summary;
     const weeklyInfo=data.daily.data;
-    //console.log(weeklyInfo);
-    weeklyInfo.forEach(function(day){
-        const time=day.time;
-        const timeConvert=new Date(0);
-       timeConvert.setUTCSeconds(time);
-        console.log(timeConvert);
-        const max=day.apparentTemperatureMax;
-        const min=day.apparentTemperatureMin;
-        
-        const date=document.createElement('p');
-        const maxTemp=document.createElement('span');
-        const minTemp=document.createElement('span');
-        date.innerHTML= timeConvert;
-        maxTemp.innerText='Max:'+ max+'º' + '-';
-        minTemp.innerText='Min:' + min+'º';
-        console.log(date);
-        
-        date.appendChild(maxTemp);
-        date.appendChild(minTemp);
-        responseContainer2.appendChild(date);
-
-
-    })
+    console.log(temp);
+   
     const icon = data.currently.icon;
     const humid = data.currently.humidity;
     const wi = data.currently.windSpeed;
     const uv = data.currently.uvIndex;
     const press = data.currently.pressure;
+   //console.log(daily);
+    paintInfo(icon,humid,wi,uv,press,temp,summary,precip,daily)
 
-    console.log(daily);
+weeklyInfo.forEach(function(day){
+    const time=day.time;
+    const timeConvert=new Date(0);
+   timeConvert.setUTCSeconds(time);
+    console.log(timeConvert);
+    const max=day.apparentTemperatureMax;
+    const min=day.apparentTemperatureMin;
+    
+   
+    
+    paintDays(timeConvert, max,min)
 
+
+})
+
+    
+
+
+}
+function paintInfo(icon,humid,wi,uv,press,temp,summary,precip,daily){
     let name = document.createElement('h1');
     let temperature = document.createElement('h2');
     let hum = document.createElement('h3');
@@ -121,8 +121,21 @@ function getWeather(data) {
     responseContainer.appendChild(precipitation);
     responseContainer.appendChild(daily1);
     responseContainer.appendChild(iconn);
+}
 
 
+function paintDays(timeConvert,max,min){
+    
+    const date=document.createElement('p');
+    const maxTemp=document.createElement('span');
+    const minTemp=document.createElement('span');
+    date.innerHTML= timeConvert;
+    maxTemp.innerText='Max:'+ max+'º' + '-';
+    minTemp.innerText='Min:' + min+'º';
+    console.log(date);
+    date.appendChild(maxTemp);
+    date.appendChild(minTemp);
+    responseContainer2.appendChild(date);
 }
 
 
