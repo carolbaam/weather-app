@@ -19,3 +19,11 @@ body{
     color:white;
     padding: 3%;
 }
+
+.header{
+    font-size: 20px;
+}
+
+.right{
+    float:  right;
+}
