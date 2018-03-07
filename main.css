@@ -1,9 +1,21 @@
 body{
     margin-top:5%;
+    background-image:url("photo.jpeg") ;
+    background-size:cover; 
 
     
 }
 .margin-top{
 
     margin-top: 3%;
+}
+
+#response-container{
+    background-color:rgb(252, 232, 204);
+    padding: 3%;
+}
+#response-container-2{
+    background-color:rgb(56, 154, 89);
+    color:white;
+    padding: 3%;
 }

@@ -77,7 +77,7 @@ function getWeather(data) {
         
         date.appendChild(maxTemp);
         date.appendChild(minTemp);
-        responseContainer.appendChild(date);
+        responseContainer2.appendChild(date);
 
 
     })
